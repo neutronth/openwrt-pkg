@@ -1,0 +1,20 @@
+diff -Nuar lua-evdev-2.1.orig/Makefile lua-evdev-2.1/Makefile
+--- lua-evdev-2.1.orig/Makefile	2015-08-03 11:53:20.000000000 +0700
++++ lua-evdev-2.1/Makefile	2015-08-03 14:28:18.940745301 +0700
+@@ -10,14 +10,14 @@
+ 
+ # Filepaths
+ 
+-CORE_C= $(SRC)/evdev/core.c
++CORE_C= $(SRC)/evdev/core.c $(SRC)/compat53/compat-5.3.c
+ 
+ # Rules
+ 
+ default: $(CORE_SO)
+ 
+ $(CORE_SO): $(CORE_C)
+-	gcc $(CFLAGS) -o $(CORE_SO) $(CORE_C) $(LDFLAGS)
++	$(CC) $(CFLAGS) -o $(CORE_SO) $(CORE_C) $(LDFLAGS)
+ 	
+ clean:
+ 	-rm $(CORE_SO)
